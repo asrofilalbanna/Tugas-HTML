@@ -1,3 +1,22 @@
+if (window.$){
+	console.log('jQuery berhasil diload');
+} else {
+	console.log('jQuery belum berhasil diload');
+}
+function tampil(){
+
+	var search = $("#search").val();
+
+	$.ajax({
+		method: 'POST',
+		url: 'cari.php',
+		// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+		data: "search="+search,
+	})
+	.done(function(data) {
+		$("#data").html(data)
+	})
+}
 $("#pegawaiForm").submit(function(e) {
 	var pegawaiForm = $(this).serialize();
 
@@ -29,20 +48,8 @@ $(".hapus").click(function() {
 	} return false;
 });
 
-function tampil(){
-	var search = $("#search").val();
-
-	$.ajax({
-		url: 'index.php',
-		type: 'GET',
-		// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-		data: "q="+search,
-	})
-	.done(function(data) {
-		$(#data).html(data)
-	})
-}
 
 $("#search").keyup(function() {
 	var search = $(this).val();
+	tampil();
 });
