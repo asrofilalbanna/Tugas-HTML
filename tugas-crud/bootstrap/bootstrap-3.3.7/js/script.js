@@ -1,22 +1,4 @@
-if (window.$){
-	console.log('jQuery berhasil diload');
-} else {
-	console.log('jQuery belum berhasil diload');
-}
-function tampil(){
 
-	var search = $("#search").val();
-
-	$.ajax({
-		method: 'POST',
-		url: 'cari.php',
-		// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
-		data: "search="+search,
-	})
-	.done(function(data) {
-		$("#data").html(data)
-	})
-}
 $("#pegawaiForm").submit(function(e) {
 	var pegawaiForm = $(this).serialize();
 
@@ -33,7 +15,7 @@ $("#pegawaiForm").submit(function(e) {
 		e.preventDefault();
 });
 
-$(".hapus").click(function() {
+$(document).on("click",".hapus",function() {
 	id = $(this).attr('id');
 	if (confirm("Did you wanna erase this data?")){
 	$.ajax({
@@ -47,6 +29,21 @@ $(".hapus").click(function() {
 	$(this).parent().parent().fadeOut(500);
 	} return false;
 });
+
+function tampil(){
+
+	var search = $("#search").val();
+
+	$.ajax({
+		method: 'POST',
+		url: 'cari.php',
+		// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+		data: "search="+search,
+	})
+	.done(function(data) {
+		$("#data").html(data)
+	})
+}
 
 
 $("#search").keyup(function() {
