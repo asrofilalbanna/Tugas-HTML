@@ -43,14 +43,15 @@ Didirikan: 1946
 			<ul>
 				<?php 
 				$id = $_GET['hal'];
-				$array = read\tampilArt::tampilArtikel($id);
+				$array = read\tampilPop::tampilPopular($id);
 				foreach ($array as $data) {
 				?>
 				<li>
-					<a href="artikel.php?hal=<?php echo $id; ?>&id=<?php echo $data['id_artikel']; ?>" class="artikel-more"><?php echo $data['art_judul']?></a>
 					
+					<a href="artikel.php?hal=<?php echo $id?>&id=<?php echo $data['id_artikel']?>" ><?php echo $data['art_judul']?></a>
+				
 				</li>
-				<?php } ?>
+				<?php  }?>
 			</ul>
 		</div>
 	</div>
